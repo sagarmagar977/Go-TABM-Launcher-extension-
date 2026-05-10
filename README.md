@@ -146,12 +146,7 @@ The extension uses these permissions:
 | `bookmarks` | Read saved bookmarks and bookmark folder paths. |
 | `storage` | Reserved for local settings and future aliases. |
 
-## Screenshots
 
-![Activation from the address bar](assets/extension%20activation.png)
-![Smart mode suggestions](assets/smart%20mode.png)
-![Tab-only mode suggestions](assets/tab%20mode.png)
-![Bookmark-only mode suggestions](assets/bm%20mode.jpg)
 
 ## Notes
 
