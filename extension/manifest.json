@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Go TABM Launcher",
+  "version": "2.0",
+  "description": "Search open tabs and saved bookmarks from the address bar. Fully local, no history, no web suggestions.",
+  "permissions": [
+    "bookmarks",
+    "tabs",
+    "storage"
+  ],
+  "omnibox": {
+    "keyword": "go"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Go TABM Launcher"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Go TABM Launcher</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0f141b;
+      --panel: #151c25;
+      --panel-2: #1d2632;
+      --text: #edf3fb;
+      --muted: #9aa8b8;
+      --border: #2b3645;
+      --accent: #4ea1ff;
+      --accent-2: #56d364;
+      --off: #5c6673;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 360px;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+    }
+
+    .wrap {
+      padding: 18px;
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    h1 {
+      font-size: 17px;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .sub {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      margin-top: 12px;
+    }
+
+    .switch-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .status-title {
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .status-text {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .switch {
+      position: relative;
+      width: 58px;
+      height: 32px;
+      flex: 0 0 auto;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      inset: 0;
+      cursor: pointer;
+      background: var(--off);
+      border-radius: 999px;
+      transition: 160ms ease;
+    }
+
+    .slider::before {
+      content: "";
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      left: 4px;
+      top: 4px;
+      background: white;
+      border-radius: 50%;
+      transition: 160ms ease;
+    }
+
+    input:checked + .slider {
+      background: var(--accent-2);
+    }
+
+    input:checked + .slider::before {
+      transform: translateX(26px);
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 9px;
+      font-weight: 700;
+    }
+
+    .steps {
+      display: grid;
+      gap: 8px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 9px;
+      align-items: start;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 13px;
+    }
+
+    .num {
+      height: 22px;
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      background: var(--panel-2);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    code {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--text);
+      padding: 1px 5px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 12px;
+    }
+
+    .commands {
+      display: grid;
+      gap: 7px;
+    }
+
+    .cmd {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .cmd:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .cmd code {
+      white-space: nowrap;
+    }
+
+    .foot {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="top">
+      <div class="mark">go</div>
+      <div>
+        <h1>Go TABM Launcher</h1>
+        <div class="sub">Local tab and bookmark launcher</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="switch-row">
+        <div>
+          <div class="status-title" id="statusTitle">Launcher active</div>
+          <div class="status-text" id="statusText">Address-bar commands are enabled.</div>
+        </div>
+        <label class="switch" title="Enable or disable launcher suggestions">
+          <input id="enabledToggle" type="checkbox" checked />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="label">How to launch</div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <div>Press <code>Alt+D</code> to focus the address bar.</div>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <div>Type <code>go</code>, then press <code>Space</code> or <code>Tab</code>.</div>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <div>Type a query or  mode command, then press <code>Enter</code>.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="label">Modes</div>
+      <div class="commands">
+        <div class="cmd">
+          <code>query</code>
+          <span>Smart mode: tabs first, bookmarks later.</span>
+        </div>
+        <div class="cmd">
+          <code>tab  query</code>
+          <span>Search open tabs and switch to one.</span>
+        </div>
+        <div class="cmd">
+          <code>bm query</code>
+          <span>Search saved bookmarks and folders.</span>
+        </div>
+        <div class="cmd">
+          <code>?</code>
+          <span>Show help suggestions.</span>
+        </div>
+      </div>
+    </section>
+
+    <p class="foot">
+      Fully local. No analytics, no cloud, and no history search from this extension.
+    </p>
+  </main>
+
+  <script>
+    const STORAGE_KEY = "launcherEnabled";
+    const toggle = document.getElementById("enabledToggle");
+    const statusTitle = document.getElementById("statusTitle");
+    const statusText = document.getElementById("statusText");
+
+    function render(enabled) {
+      toggle.checked = enabled;
+      statusTitle.textContent = enabled ? "Launcher active" : "Launcher inactive";
+      statusText.textContent = enabled
+        ? "Address-bar commands are enabled."
+        : "Address-bar commands are paused.";
+    }
+
+    async function loadState() {
+      const result = await chrome.storage.local.get(STORAGE_KEY);
+      render(result[STORAGE_KEY] !== false);
+    }
+
+    toggle.addEventListener("change", async () => {
+      await chrome.storage.local.set({ [STORAGE_KEY]: toggle.checked });
+      render(toggle.checked);
+    });
+
+    loadState();
+  </script>
+</body>
+</html>
