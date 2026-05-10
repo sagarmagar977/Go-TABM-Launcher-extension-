@@ -29,28 +29,36 @@ Activate the extension:
 go [Space]
 ```
 
-Then type one of these:
+![Go TABM Launcher activation](assets/extension%20activation.png)
+
+Then type query :
 
 ```text
-youtube
+movies
 ```
 
 Smart mode. Searches open tabs first. Bookmark fallback is planned.
 
+![Go TABM Launcher smart mode](assets/smart%20mode.png)
+
 ```text
-tab youtube
+tab [query]
 ```
 
 Tab-only mode. Searches open tabs by title, URL, and domain.
 
+![Go TABM Launcher tab mode](assets/tab%20mode.png)
+
 ```text
-bm chatgpt
+bm [query]
 ```
 
 Bookmark-only mode. Searches saved bookmarks.
 
+![Go TABM Launcher bookmark mode](assets/bm%20mode.jpg)
+
 ```text
-bm ai
+bm [query]
 ```
 
 Searches bookmarks by folder name or folder path, so bookmarks inside an `AI` folder can appear.
@@ -119,22 +127,6 @@ or:
 Alt+D -> go -> Space -> bm chatgpt -> Enter
 ```
 
-## Project Structure
-
-```text
-bookmark-jump-v2/
-  extension/
-    manifest.json
-    background.js
-    popup.html
-    icon.png
-  reference_folder/
-    PRD.md
-    workflow/
-      PLAN.md
-      TRACK.md
-  README.md
-```
 
 ## Privacy
 
@@ -156,24 +148,10 @@ The extension uses these permissions:
 
 ## Screenshots
 
-Markdown supports `.png` images. Put screenshots in a folder such as:
-
-```text
-assets/
-```
-
-Then reference them like this:
-
-```md
-![Go TABM Launcher tab search](assets/tab-search.png)
-```
-
-Example section after adding screenshots:
-
-```md
-![Tab search](assets/tab-search.png)
-![Bookmark search](assets/bookmark-search.png)
-```
+![Activation from the address bar](assets/extension%20activation.png)
+![Smart mode suggestions](assets/smart%20mode.png)
+![Tab-only mode suggestions](assets/tab%20mode.png)
+![Bookmark-only mode suggestions](assets/bm%20mode.jpg)
 
 ## Notes
 

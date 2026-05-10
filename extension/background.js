@@ -271,10 +271,16 @@ async function getSmartSuggestions(query) {
     return tabs.map(formatTabSuggestion);
   }
 
+  const bookmarks = await searchBookmarks(query);
+
+  if (bookmarks.length > 0) {
+    return bookmarks.map(formatBookmarkSuggestion);
+  }
+
   return [
     {
       content: "noop:no-smart-results",
-      description: `[LOCAL] No open tab found for "${escapeXml(query)}". Bookmark search comes next.`
+      description: `[LOCAL] No tab or bookmark found for "${escapeXml(query)}"`
     }
   ];
 }

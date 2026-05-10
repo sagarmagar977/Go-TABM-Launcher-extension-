@@ -210,6 +210,36 @@
       font-size: 12px;
       line-height: 1.45;
     }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .social-link {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 12px;
+      transition: border-color 140ms ease, color 140ms ease, background 140ms ease;
+    }
+
+    .social-link:hover {
+      background: var(--panel-2);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -275,9 +305,26 @@
       </div>
     </section>
 
-    <p class="foot">
-      Fully local. No analytics, no cloud, and no history search from this extension.
-    </p>
+    
+
+    <nav class="social" aria-label="Project links">
+      <a
+        class="social-link"
+        href="https://github.com/sagarmagar977/Go-TABM-Launcher-extension-"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="GitHub repository"
+        aria-label="GitHub repository"
+      >GH</a>
+      <a
+        class="social-link"
+        href="https://www.linkedin.com/in/sagar-thapa-magar-656756210/"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="LinkedIn profile"
+        aria-label="LinkedIn profile"
+      >in</a>
+    </nav>
   </main>
 
   <script>
